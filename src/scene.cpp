@@ -34,7 +34,7 @@ void Scene::loadFromJSON(const std::string& jsonName)
     {
         const auto& name = item.key();
         const auto& p = item.value();
-        Material newMaterial{};
+        Material newMaterial{};                         // all struct properties are initialized to 0.0f
         // TODO: handle materials loading differently
         if (p["TYPE"] == "Diffuse")
         {
@@ -51,6 +51,9 @@ void Scene::loadFromJSON(const std::string& jsonName)
         {
             const auto& col = p["RGB"];
             newMaterial.color = glm::vec3(col[0], col[1], col[2]);
+            newMaterial.hasReflective = p["REFLECTIVE"];
+            newMaterial.hasRefractive = p["REFRACTIVE"];
+            newMaterial.indexOfRefraction = p["INDEXOFREFRACTION"];
         }
         MatNameToID[name] = materials.size();
         materials.emplace_back(newMaterial);

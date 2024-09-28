@@ -1,8 +1,8 @@
 #include "intersections.h"
 
 __host__ __device__ float boxIntersectionTest(
-    Geom box,                       // Represents the geometry of the box, its transformation matrices (inverseTransform, transform, etc.)
-    Ray r,                          // The ray in world space that may intersect with the box
+    const Geom& box,                // Represents the geometry of the box, its transformation matrices (inverseTransform, transform, etc.)
+    const Ray& r,                   // The ray in world space that may intersect with the box
     glm::vec3 &intersectionPoint,   // A reference that will store the world-space intersection point if the ray intersects the box
     glm::vec3 &normal,              // A reference that will store the world-space surface normal at the intersection point
     bool &outside)                  // A reference to a boolean that will indicate if the intersection occurs from outside the box
@@ -30,8 +30,8 @@ __host__ __device__ float boxIntersectionTest(
         {
             float t1 = (-0.5f - q.origin[xyz]) / qdxyz; // The distance along the ray where it intersects the first plane (e.g. at x = -0.5)
             float t2 = (+0.5f - q.origin[xyz]) / qdxyz; // The distance along the ray where it intersects the second plane (e.g. at x = +0.5)
-            float ta = glm::min(t1, t2);                // The smaller of the two distances
-            float tb = glm::max(t1, t2);                // The larger of the two distances
+            float ta = min(t1, t2);                     // The smaller of the two distances
+            float tb = max(t1, t2);                     // The larger of the two distances
             glm::vec3 n;
             n[xyz] = t2 < t1 ? +1 : -1;                 // The normal of the surface at the intersection (depending on whether the ray hits from the positive or negative side)
 
@@ -73,8 +73,8 @@ __host__ __device__ float boxIntersectionTest(
 }
 
 __host__ __device__ float sphereIntersectionTest(
-    Geom sphere,                    // Represents the geometry of the sphere, its transformation matrices (inverseTransform, transform, etc.)
-    Ray r,                          // The ray in world space that may intersect with the sphere
+    const Geom& sphere,             // Represents the geometry of the sphere, its transformation matrices (inverseTransform, transform, etc.)
+    const Ray& r,                   // The ray in world space that may intersect with the sphere
     glm::vec3 &intersectionPoint,   // A reference that will store world-space the intersection point if the ray intersects the sphere
     glm::vec3 &normal,              // A reference that will store world-space the surface normal at the intersection point
     bool &outside)                  // A reference to a boolean that will indicate if the intersection occurs from outside the sphere
