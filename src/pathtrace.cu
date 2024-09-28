@@ -319,14 +319,14 @@ void pathtrace(uchar4* pbo, int frame, int iter)
     const int pixelcount = cam.resolution.x * cam.resolution.y;
 
     // 2D block for generating ray from camera
-    const dim3 blockSize2d(8, 8);
+    const dim3 blockSize_2d(8, 8);
     const dim3 numBlocksPixels_2d(
-        (cam.resolution.x + blockSize2d.x - 1) / blockSize2d.x,
-        (cam.resolution.y + blockSize2d.y - 1) / blockSize2d.y);
+        (cam.resolution.x + blockSize_2d.x - 1) / blockSize_2d.x,
+        (cam.resolution.y + blockSize_2d.y - 1) / blockSize_2d.y);
 
     // 1D block for path tracing
-    const int blockSize1d = 128;
-    dim3 numBlocksPixels_1d = (pixelcount + blockSize1d - 1) / blockSize1d;
+    const int blockSize_1d = 128;
+    dim3 numBlocksPixels_1d = (pixelcount + blockSize_1d - 1) / blockSize_1d;
 
     ///////////////////////////////////////////////////////////////////////////
 
@@ -359,7 +359,7 @@ void pathtrace(uchar4* pbo, int frame, int iter)
 
     // TODO: perform one iteration of path tracing
 
-    generateRayFromCamera<<<numBlocksPixels_2d, blockSize2d>>>(cam, guiData->CameraRaysStochasticSampling, iter, traceDepth, dev_paths);
+    generateRayFromCamera<<<numBlocksPixels_2d, blockSize_2d>>>(cam, guiData->CameraRaysStochasticSampling, iter, traceDepth, dev_paths);
     checkCUDAError("generateRayFromCamera failed");
 
     int depth = 0;
@@ -377,8 +377,8 @@ void pathtrace(uchar4* pbo, int frame, int iter)
         checkCUDAError("cudaMemset remaining dev_intersections to 0 failed!");
 
         // tracing
-        dim3 numBlocksPathSegments_1d = (num_paths + blockSize1d - 1) / blockSize1d;
-        computeIntersections<<<numBlocksPathSegments_1d, blockSize1d>>> (
+        dim3 numBlocksPathSegments_1d = (num_paths + blockSize_1d - 1) / blockSize_1d;
+        computeIntersections<<<numBlocksPathSegments_1d, blockSize_1d>>> (
             num_paths,
             dev_paths,
             dev_geoms,
@@ -406,7 +406,7 @@ void pathtrace(uchar4* pbo, int frame, int iter)
             checkCUDAError("thrust::sort_by_key failed");
         }
 
-        shadeBSDF<<<numBlocksPathSegments_1d, blockSize1d>>>(
+        shadeBSDF<<<numBlocksPathSegments_1d, blockSize_1d>>>(
             iter,
             num_paths,
             dev_intersections,
@@ -426,13 +426,13 @@ void pathtrace(uchar4* pbo, int frame, int iter)
     }
 
     // Assemble this iteration and apply it to the image
-    finalGather<<<numBlocksPixels_1d, blockSize1d>>>(pixelcount, dev_image, dev_paths);
+    finalGather<<<numBlocksPixels_1d, blockSize_1d>>>(pixelcount, dev_image, dev_paths);
     checkCUDAError("finalGather failed");
 
     ///////////////////////////////////////////////////////////////////////////
 
     // Send results to OpenGL buffer for rendering
-    sendImageToPBO<<<numBlocksPixels_2d, blockSize2d>>>(pbo, cam.resolution, iter, dev_image);
+    sendImageToPBO<<<numBlocksPixels_2d, blockSize_2d>>>(pbo, cam.resolution, iter, dev_image);
     checkCUDAError("sendImageToPBO failed");
 
     // Retrieve image from GPU
