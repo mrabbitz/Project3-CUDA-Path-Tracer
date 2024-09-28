@@ -17,8 +17,10 @@
 class GuiDataContainer
 {
 public:
-    GuiDataContainer() : TracedDepth(0) {}
+    GuiDataContainer() : TracedDepth(0), SortPathSegmentsByMaterial(true), CameraRaysStochasticSampling(true) {}
     int TracedDepth;
+    bool SortPathSegmentsByMaterial;
+    bool CameraRaysStochasticSampling;
 };
 
 namespace utilityCore

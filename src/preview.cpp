@@ -235,7 +235,9 @@ void RenderImGui()
     //ImGui::SameLine();
     //ImGui::Text("counter = %d", counter);
     ImGui::Text("Traced Depth %d", imguiData->TracedDepth);
-    ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+    ImGui::Text("Rolling 60 frame average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+    ImGui::Checkbox("Sort Path Segments By Material", &(imguiData->SortPathSegmentsByMaterial));
+    ImGui::Checkbox("Camera Rays Stochastic Sampling", &(imguiData->CameraRaysStochasticSampling));
     ImGui::End();
 
 
