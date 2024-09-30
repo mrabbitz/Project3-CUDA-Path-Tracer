@@ -289,7 +289,7 @@ __global__ void shadeBSDF(
                 const glm::vec3 intersect_point = getPointOnRay(pathSegment.ray, intersection.t);
                 scatterRay(pathSegment, intersect_point, intersection.surfaceNormal, intersection.front_face, material, rng);
 
-                pathSegment.remainingBounces = pathSegment.color != glm::vec3(0.0f) ? pathSegment.remainingBounces - 1 : 0;
+                --pathSegment.remainingBounces;
             }
         }
         else // if no intersection

@@ -83,8 +83,6 @@ __host__ __device__ void scatterRay(
 
     if (m.hasReflective && m.hasRefractive) // dielectric
     {
-        color = glm::vec3(1.0f);
-
         float ri = front_face ? (1.0f / m.indexOfRefraction) : m.indexOfRefraction;
         float cos_theta = min(glm::dot(-pathSegment.ray.direction, normal), 1.0f);
         float sin_theta = sqrt(1.0f - cos_theta * cos_theta);
@@ -100,6 +98,8 @@ __host__ __device__ void scatterRay(
         {
             scatter_direction = glm::refract(pathSegment.ray.direction, normal, ri);
         }
+
+        color = glm::vec3(1.0f);
     }
     else if (m.hasReflective) // metal
     {
@@ -117,12 +117,15 @@ __host__ __device__ void scatterRay(
         // roughness already clamped to 0, 1
         scatter_direction += m.roughness * random_unit_vector(rng);
 
-        color = m.color;
-
         // The catch is that for big spheres or grazing rays, we may scatter below the surface. We can just have the surface absorb those
-        if (glm::dot(scatter_direction, normal) < 0.0f)
+        if (glm::dot(scatter_direction, normal) > 0.0f)
+        {
+            color = m.color;
+        }
+        else
         {
             color = glm::vec3(0.0f);
+            pathSegment.remainingBounces = 0;
         }
     }
     //else if (m.hasRefractive)
