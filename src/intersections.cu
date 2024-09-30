@@ -36,7 +36,7 @@ __host__ __device__ float boxIntersectionTest(
             n[xyz] = t2 < t1 ? +1 : -1;                 // The normal of the surface at the intersection (depending on whether the ray hits from the positive or negative side)
 
             // 4: Update tmin and tmax based on the current axis' intersections
-            if (ta > 0 && ta > tmin)
+            if (ta > RAY_TRACE_EPSILION && ta > tmin)
             {
                 tmin = ta;
                 tmin_n = n;
@@ -50,10 +50,10 @@ __host__ __device__ float boxIntersectionTest(
     }
 
     // 5: Check for Valid Intersection
-    if (tmax >= tmin && tmax > 0)
+    if (tmax >= tmin && tmax > RAY_TRACE_EPSILION)
     {
         outside = true;
-        if (tmin <= 0)
+        if (tmin <= RAY_TRACE_EPSILION)
         {
             // If tmin is negative but tmax is positive, the ray starts inside the box and exits at tmax, so the intersection happens at tmax
             tmin = tmax;
@@ -120,12 +120,12 @@ __host__ __device__ float sphereIntersectionTest(
     float t2 = firstTerm - squareRoot;
 
     float t = 0;
-    if (t1 < 0 && t2 < 0)
+    if (t1 < RAY_TRACE_EPSILION && t2 < RAY_TRACE_EPSILION)
     {
         // both intersections behind ray
         return -1;
     }
-    else if (t1 > 0 && t2 > 0)
+    else if (t1 > RAY_TRACE_EPSILION && t2 > RAY_TRACE_EPSILION)
     {
         // both intersections in front of ray
         t = min(t1, t2);
