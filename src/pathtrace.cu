@@ -168,7 +168,7 @@ __global__ void generateRayFromCamera(const Camera cam, const bool stochasticSam
         if (stochasticSampling)
         {
             // Implement antialiasing by jittering the ray
-            thrust::default_random_engine rng = makeSeededRandomEngine(iter, index, 0);
+            thrust::default_random_engine rng = makeSeededRandomEngine(iter, index, traceDepth);
             thrust::uniform_real_distribution<float> u01(0, 1);
 
             // Random offset in the [-.5, .5] range for x and y
@@ -259,6 +259,7 @@ __global__ void computeIntersections(
 
 __global__ void shadeBSDF(
     const int iter,
+    const int currentDepth,
     const int num_paths,
     const ShadeableIntersection* shadeableIntersections,
     PathSegment* pathSegments,
@@ -280,9 +281,10 @@ __global__ void shadeBSDF(
                 pathSegment.remainingBounces = 0;
             }
             else {
-                thrust::default_random_engine rng = makeSeededRandomEngine(iter, idx, 0);
+                thrust::default_random_engine rng = makeSeededRandomEngine(iter, idx, currentDepth);
 
-                const glm::vec3 intersect_point = getPointOnRay(pathSegment.ray, intersection.t);
+                // no need to call getPointOnRay() since the returned t from the intersection tests has already had getPointOnRay applied to it
+                const glm::vec3 intersect_point = pathSegment.ray.origin + intersection.t * pathSegment.ray.direction;
                 scatterRay(pathSegment, intersect_point, intersection.surfaceNormal, material, rng);
 
                 --pathSegment.remainingBounces;
@@ -408,6 +410,7 @@ void pathtrace(uchar4* pbo, int frame, int iter)
 
         shadeBSDF<<<numBlocksPathSegments_1d, blockSize_1d>>>(
             iter,
+            depth,
             num_paths,
             dev_intersections,
             dev_paths,

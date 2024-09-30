@@ -79,7 +79,7 @@ __host__ __device__ void scatterRay(
         color = m.color;
     }
 
-    pathSegment.ray.origin = intersect_point;
     pathSegment.ray.direction = glm::normalize(scatter_direction);
+    pathSegment.ray.origin = intersect_point + .0001f * pathSegment.ray.direction;
     pathSegment.color *= color;
 }
