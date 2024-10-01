@@ -168,7 +168,7 @@ __global__ void generateRayFromCamera(const Camera cam, const bool stochasticSam
         if (stochasticSampling)
         {
             // Implement antialiasing by jittering the ray
-            thrust::default_random_engine rng = makeSeededRandomEngine(iter, index, 0);
+            thrust::default_random_engine rng = makeSeededRandomEngine(iter, index, traceDepth);
             thrust::uniform_real_distribution<float> u01(0, 1);
 
             // Random offset in the [-.5, .5] range for x and y
@@ -207,12 +207,13 @@ __global__ void computeIntersections(
         float t;
         glm::vec3 intersect_point;
         glm::vec3 normal;
+        bool outside;
         float t_min = FLT_MAX;
         int hit_geom_index = -1;
-        bool outside = true;
 
         glm::vec3 tmp_intersect;
         glm::vec3 tmp_normal;
+        bool tmp_outside;
 
         // naive parse through global geoms
 
@@ -222,22 +223,23 @@ __global__ void computeIntersections(
 
             if (geom.type == CUBE)
             {
-                t = boxIntersectionTest(geom, pathSegment.ray, tmp_intersect, tmp_normal, outside);
+                t = boxIntersectionTest(geom, pathSegment.ray, tmp_intersect, tmp_normal, tmp_outside);
             }
             else if (geom.type == SPHERE)
             {
-                t = sphereIntersectionTest(geom, pathSegment.ray, tmp_intersect, tmp_normal, outside);
+                t = sphereIntersectionTest(geom, pathSegment.ray, tmp_intersect, tmp_normal, tmp_outside);
             }
             // TODO: add more intersection tests here... triangle? metaball? CSG?
 
             // Compute the minimum t from the intersection tests to determine what
             // scene geometry object was hit first.
-            if (t > 0.0f && t_min > t)
+            if (t > RAY_TRACE_EPSILION && t_min > t)
             {
                 t_min = t;
                 hit_geom_index = i;
-                intersect_point = tmp_intersect; // TODO MJR - store this?
+                intersect_point = tmp_intersect;
                 normal = tmp_normal;
+                outside = tmp_outside;
             }
         }
 
@@ -253,12 +255,14 @@ __global__ void computeIntersections(
             intersection.t = t_min;
             intersection.materialId = geoms[hit_geom_index].materialid;
             intersection.surfaceNormal = normal;
+            intersection.front_face = outside;
         }
     }
 }
 
 __global__ void shadeBSDF(
     const int iter,
+    const int currentDepth,
     const int num_paths,
     const ShadeableIntersection* shadeableIntersections,
     PathSegment* pathSegments,
@@ -280,10 +284,10 @@ __global__ void shadeBSDF(
                 pathSegment.remainingBounces = 0;
             }
             else {
-                thrust::default_random_engine rng = makeSeededRandomEngine(iter, idx, 0);
+                thrust::default_random_engine rng = makeSeededRandomEngine(iter, idx, currentDepth);
 
                 const glm::vec3 intersect_point = getPointOnRay(pathSegment.ray, intersection.t);
-                scatterRay(pathSegment, intersect_point, intersection.surfaceNormal, material, rng);
+                scatterRay(pathSegment, intersect_point, intersection.surfaceNormal, intersection.front_face, material, rng);
 
                 --pathSegment.remainingBounces;
             }
@@ -408,6 +412,7 @@ void pathtrace(uchar4* pbo, int frame, int iter)
 
         shadeBSDF<<<numBlocksPathSegments_1d, blockSize_1d>>>(
             iter,
+            depth,
             num_paths,
             dev_intersections,
             dev_paths,
