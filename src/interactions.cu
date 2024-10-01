@@ -99,7 +99,7 @@ __host__ __device__ void scatterRay(
             scatter_direction = glm::refract(pathSegment.ray.direction, normal, ri);
         }
 
-        color = glm::vec3(1.0f);
+        color = m.color;
     }
     else if (m.hasReflective) // metal
     {
