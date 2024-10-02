@@ -156,3 +156,56 @@ __host__ __device__ float sphereIntersectionTest(
     // 7: Return the distance between the ray’s origin and the intersection point in world space
     return glm::length(r.origin - intersectionPoint);
 }
+
+// Derived from glm::intersectRayTriangle
+// Using Möller–Trumbore intersection algorithm
+__host__ __device__ float triangleIntersectionTest(
+    const Geom& triangle,
+    const Ray& r,
+    glm::vec3& intersectionPoint,
+    glm::vec3& normal,
+    bool& outside)
+{
+    glm::vec3 baryPosition = glm::vec3(0.0f);
+
+    glm::vec3 e1 = triangle.v1 - triangle.v0;
+    glm::vec3 e2 = triangle.v2 - triangle.v0;
+
+    glm::vec3 p = glm::cross(r.direction, e2);
+
+    float a = glm::dot(e1, p);
+
+    if (abs(a) < FLT_EPSILON)
+        return -1;
+
+    float f = 1.0f / a;
+
+    glm::vec3 s = r.origin - triangle.v0;
+    baryPosition.x = f * glm::dot(s, p);
+    if (baryPosition.x < 0.0f || baryPosition.x > 1.0f)
+        return -1;
+
+    glm::vec3 q = glm::cross(s, e1);
+    baryPosition.y = f * glm::dot(r.direction, q);
+    if (baryPosition.y < 0.0f || baryPosition.y + baryPosition.x > 1.0f)
+        return -1;
+
+    baryPosition.z = f * glm::dot(e2, q);
+
+	if (baryPosition.z < 0.0f)
+		return -1;
+
+    // At this point, we have an intersection
+	float t = baryPosition.z;
+
+	glm::vec3 interpolatedNormal = glm::normalize(
+		baryPosition.x * triangle.n0 +
+		baryPosition.y * triangle.n1 +
+		baryPosition.z * triangle.n2);
+
+	outside = glm::dot(-r.direction, interpolatedNormal) >= 0;
+	intersectionPoint = getPointOnRay(r, t);
+	normal = outside ? interpolatedNormal : -interpolatedNormal;
+
+	return t;
+}
