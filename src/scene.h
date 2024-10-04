@@ -8,6 +8,7 @@
 #include <unordered_map>
 #include "utilities.h"
 #include "sceneStructs.h"
+#include "BVH.h"
 
 using namespace std;
 
@@ -24,4 +25,8 @@ public:
     std::vector<Geom> geoms;
     std::vector<Material> materials;
     RenderState state;
+
+    std::vector<BVHNode> bvhNodes;
+    int bvhRootIndex;
+    std::vector<int> geomIdx;
 };

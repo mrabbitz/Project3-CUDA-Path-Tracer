@@ -36,7 +36,7 @@ __host__ __device__ float boxIntersectionTest(
             n[xyz] = t2 < t1 ? +1 : -1;                 // The normal of the surface at the intersection (depending on whether the ray hits from the positive or negative side)
 
             // 4: Update tmin and tmax based on the current axis' intersections
-            if (ta > RAY_TRACE_EPSILION && ta > tmin)
+            if (ta > RAY_TRACE_EPSILON && ta > tmin)
             {
                 tmin = ta;
                 tmin_n = n;
@@ -50,10 +50,10 @@ __host__ __device__ float boxIntersectionTest(
     }
 
     // 5: Check for Valid Intersection
-    if (tmax >= tmin && tmax > RAY_TRACE_EPSILION)
+    if (tmax >= tmin && tmax > RAY_TRACE_EPSILON)
     {
         outside = true;
-        if (tmin <= RAY_TRACE_EPSILION)
+        if (tmin <= RAY_TRACE_EPSILON)
         {
             // If tmin is negative but tmax is positive, the ray starts inside the box and exits at tmax, so the intersection happens at tmax
             tmin = tmax;
@@ -120,12 +120,12 @@ __host__ __device__ float sphereIntersectionTest(
     float t2 = firstTerm - squareRoot;
 
     float t = 0;
-    if (t1 < RAY_TRACE_EPSILION && t2 < RAY_TRACE_EPSILION)
+    if (t1 < RAY_TRACE_EPSILON && t2 < RAY_TRACE_EPSILON)
     {
         // both intersections behind ray
         return -1;
     }
-    else if (t1 > RAY_TRACE_EPSILION && t2 > RAY_TRACE_EPSILION)
+    else if (t1 > RAY_TRACE_EPSILON && t2 > RAY_TRACE_EPSILON)
     {
         // both intersections in front of ray
         t = min(t1, t2);
@@ -175,7 +175,7 @@ __host__ __device__ float triangleIntersectionTest(
 
     float a = glm::dot(e1, p);
 
-    if (abs(a) < FLT_EPSILON)
+    if (-FLT_EPSILON < a && a < FLT_EPSILON)
         return -1;
 
     float f = 1.0f / a;
@@ -208,4 +208,36 @@ __host__ __device__ float triangleIntersectionTest(
 	normal = outside ? interpolatedNormal : -interpolatedNormal;
 
 	return t;
+}
+
+__host__ __device__ bool aabbIntersectionTest(const AABB& box, const Ray& ray)
+{
+    glm::vec3 invDir = 1.0f / ray.direction;
+
+    // Calculate intersection with the slabs in the x direction
+    float tx0 = (box.min.x - ray.origin.x) * invDir.x;
+    float tx1 = (box.max.x - ray.origin.x) * invDir.x;
+    float tmin = min(tx0, tx1);
+    float tmax = max(tx0, tx1);
+
+    // Early exit: check if the x-axis slabs already disqualify an intersection
+    if (tmax < tmin) return false;
+
+    // Calculate intersection with the slabs in the y direction
+    float ty0 = (box.min.y - ray.origin.y) * invDir.y;
+    float ty1 = (box.max.y - ray.origin.y) * invDir.y;
+    tmin = max(tmin, min(ty0, ty1));
+    tmax = min(tmax, max(ty0, ty1));
+
+    // Early exit: if no overlap in the y direction, return false
+    if (tmax < tmin) return false;
+
+    // Calculate intersection with the slabs in the z direction
+    float tz0 = (box.min.z - ray.origin.z) * invDir.z;
+    float tz1 = (box.max.z - ray.origin.z) * invDir.z;
+    tmin = max(tmin, min(tz0, tz1));
+    tmax = min(tmax, max(tz0, tz1));
+
+    // Final check: return true if there is an intersection, otherwise false
+    return tmax >= tmin;
 }
