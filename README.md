@@ -1,7 +1,7 @@
 CUDA Path Tracer
 ================
 
-**University of Pennsylvania, CIS 565: GPU Programming and Architecture, Project 3**
+**University of Pennsylvania, CIS 5650: GPU Programming and Architecture, Project 3**
 
 * Michael Rabbitz
   * [LinkedIn](https://www.linkedin.com/in/mike-rabbitz)
