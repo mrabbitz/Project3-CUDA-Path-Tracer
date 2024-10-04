@@ -58,8 +58,11 @@ int Scene::loadFromObj(const std::string& filePath, bool withinJsonFile, std::un
         return 1;
     }
 
-    std::cout << "Loaded " << _shapes.size() << " shapes." << std::endl;
+    std::cout << "OBJ loader..." << std::endl;
     std::cout << "Loaded " << _materials.size() << " materials." << std::endl;
+    std::cout << "Loaded " << _shapes.size() << " shapes." << std::endl;
+    std::cout << "Loaded " << _attrib.vertices.size() << " vertices." << std::endl;
+    int triangleCount = 0;
 
     for (const auto& material : _materials)
     {
@@ -102,6 +105,7 @@ int Scene::loadFromObj(const std::string& filePath, bool withinJsonFile, std::un
 
     for (const auto& shape : _shapes)
     {
+        triangleCount += shape.mesh.indices.size() / 3;
         // Parse positions and normals from the attrib array based on indices
         for (size_t i = 0; i < shape.mesh.indices.size(); i += 3) {
             Geom newGeom;
@@ -175,6 +179,7 @@ int Scene::loadFromObj(const std::string& filePath, bool withinJsonFile, std::un
             geoms.push_back(newGeom);
         }
     }
+    std::cout << "Loaded " << triangleCount << " triangles." << std::endl;
 
     if (withinJsonFile == false)
     {
@@ -206,6 +211,12 @@ int Scene::loadFromObj(const std::string& filePath, bool withinJsonFile, std::un
         int arraylen = camera.resolution.x * camera.resolution.y;
         state.image.resize(arraylen);
         std::fill(state.image.begin(), state.image.end(), glm::vec3());
+
+        if (!geoms.empty())
+        {
+            BVHBuilder bvhBuilder = BVHBuilder(geoms, bvhNodes);
+            bvhRootIndex = bvhBuilder.buildBVH(geomIdx);
+        }
     }
 
     return 0;
@@ -316,4 +327,10 @@ void Scene::loadFromJSON(const std::string& jsonName)
     int arraylen = camera.resolution.x * camera.resolution.y;
     state.image.resize(arraylen);
     std::fill(state.image.begin(), state.image.end(), glm::vec3());
+
+    if (!geoms.empty())
+    {
+        BVHBuilder bvhBuilder = BVHBuilder(geoms, bvhNodes);
+        bvhRootIndex = bvhBuilder.buildBVH(geomIdx);
+    }
 }

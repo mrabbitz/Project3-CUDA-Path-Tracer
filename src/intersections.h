@@ -5,6 +5,7 @@
 
 #include "sceneStructs.h"
 #include "utilities.h"
+#include "BVH.h"
 
 /**
  * Handy-dandy hash function that provides seeds for random number generation.
@@ -80,3 +81,5 @@ __host__ __device__ float triangleIntersectionTest(
     glm::vec3& intersectionPoint,
     glm::vec3& normal,
     bool& outside);
+
+__host__ __device__ bool aabbIntersectionTest(const AABB& box, const Ray& ray);
