@@ -11,7 +11,7 @@ CUDA Path Tracer
 
 ## Part 1: Introduction
 
-This project takes an incomplete skeleton of a C++/CUDA path tracer and implements physically-based visual improvements, mesh enhancements, and performance optimizations.
+This project takes an incomplete skeleton of a C++/CUDA path tracer, transforms it to a functional state by implementing core features, and further enhances it through physically-based visual improvements, mesh enhancements, and performance optimizations.
 
 ### Path Tracing Overview
 Path tracing is a sophisticated rendering technique in computer graphics designed to achieve photorealistic images by accurately simulating the behavior of light in a scene. This technique flips the conventional perspective on light: instead of light traveling from sources to the eye, rays are cast from the camera into the scene, exploring how light interacts with the surfaces of objects in the scene and determining how those surfaces are illuminated. The Bidirectional Scattering Distribution Function (BSDF) plays a key role in this process, governing how light scatters when it hits a surface, accounting for both reflection and refraction.
