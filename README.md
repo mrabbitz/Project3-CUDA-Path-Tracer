@@ -113,7 +113,8 @@ The renderer implements the [Möller–Trumbore intersection algorithm](https://
 ## Part 5: Performance Optimizations
 
 ### Bounding Volume Hierarchy (BVH)
-[Reference 1](https://jacco.ompf2.com/2022/04/13/how-to-build-a-bvh-part-1-basics/) [Reference 2](https://jacco.ompf2.com/2022/04/18/how-to-build-a-bvh-part-2-faster-rays/)
+[Reference 1](https://jacco.ompf2.com/2022/04/13/how-to-build-a-bvh-part-1-basics/)
+[Reference 2](https://jacco.ompf2.com/2022/04/18/how-to-build-a-bvh-part-2-faster-rays/)
 
 The Bounding Volume Hierarchy (BVH) implementation utilizes the Surface Area Heuristic (SAH) to efficiently build a hierarchical structure for 3D geometries, which significantly enhances ray intersection performance. Each geometry is encapsulated within an Axis-Aligned Bounding Box (AABB), calculated for various shapes such as triangles, cubes, and spheres. The BVH nodes store the AABBs and reference the geometries, while the subdivision process intelligently partitions the geometries based on their centroids. The SAH optimizes this subdivision by evaluating potential split positions and axes to minimize the expected cost of ray-object intersection tests, effectively balancing the number of rays and objects in each node.
 
