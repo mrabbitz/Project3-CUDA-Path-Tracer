@@ -27,7 +27,7 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 |BSDF = BRDF + BTDF|
 |:--:|
 |<img src="img/bsdf.png" alt="bsdf" height="400"> <tr></tr>|
-|Source: [Wikipedia](https://en.wikipedia.org/wiki/Bidirectional_scattering_distribution_function)|
+|[Source](https://en.wikipedia.org/wiki/Bidirectional_scattering_distribution_function)|
 
 |"Scattering" in Path Tracing using BSDFs|
 |:--:|
@@ -40,7 +40,7 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 |Lambertian Reflectance|
 |:--:|
 |<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="200"> <tr></tr>|
-|Source: [Wikipedia](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
+|[Source](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
 ***Insert cool demo image(s) here***
 
@@ -48,7 +48,7 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 |Mirrored Reflectance|
 |:--:|
 |<img src="img/specular_reflection.png" alt="specular_reflection" height="200"> <tr></tr>|
-|Source: [Wikipedia](https://en.wikipedia.org/wiki/Specular_reflection)|
+|[Source](https://en.wikipedia.org/wiki/Specular_reflection)|
 
 ***Insert cool demo image(s) here***
 
