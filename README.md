@@ -7,6 +7,8 @@ CUDA Path Tracer
   * [LinkedIn](https://www.linkedin.com/in/mike-rabbitz)
 * Tested on: Windows 10, i7-9750H @ 2.60GHz 32GB, RTX 2060 6GB (Personal)
 
+***Insert coolest demo image(s) here***
+
 ## Part 1: Introduction
 
 This project takes an incomplete skeleton of a C++/CUDA path tracer and implements physically-based visual improvements, mesh enhancements, and performance optimizations.
