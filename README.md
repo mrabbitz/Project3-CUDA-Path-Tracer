@@ -45,7 +45,7 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 ### Perfect Specular Reflection (Mirrored) BSDF Evaluation
 |Mirrored Reflectance|
 |:--:|
-|![specular_reflection](img/specular_reflection.png) <tr></tr>|
+|<img src="img/specular_reflection.png" alt="specular_reflection" height="200"> <tr></tr>|
 |Source: [Wikipedia](https://en.wikipedia.org/wiki/Specular_reflection)|
 
 ### Stochastic Sampled Antialiasing
