@@ -22,7 +22,7 @@ As rays bounce off surfaces, they generate multiple reflections and refractions 
 |:--:|
 |![global_illumination](img/global_illumination.png) <tr></tr>|
 |*Left: Light Ray* ***directly*** *illuminating the floor from the viewer's perspective* <tr></tr>|
-|*Right: Light Ray* ***indirectly*** *illuminating the floor from the viewer's perspective via one or more intermediate bounces*|
+|*Right: Light Ray* ***indirectly*** *illuminating the floor from the viewer's perspective via an intermediate bounce*|
 
 |BSDF = BRDF + BTDF|
 |:--:|
