@@ -65,6 +65,8 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 
 ### Dielectric BSDF Evaulation (Refraction, Fresnel effects)
 
+### Metal BSDF Evaulation (Roughness, Fresnel effects)
+
 ## Part 4: Mesh Enhancements
 
 ### OBJ Loader and Renderer (Ray-Triangle Intersection)
