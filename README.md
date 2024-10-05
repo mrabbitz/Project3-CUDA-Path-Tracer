@@ -32,7 +32,7 @@ As rays bounce off surfaces, they generate multiple reflections and refractions 
 |"Scattering" in Path Tracing using BSDFs|
 |:--:|
 |![path_tracing](img/path_tracing.png) <tr></tr>|
-|This series illustrates how rays are cast from the eye in path tracing, with each image depicting the increasing number of bounces (1, 2, and 3) that contribute to global illumination through surface interactions modeled by BSDFs|
+|This series illustrates a single ray cast from the eye in path tracing (yellow ray), focusing on a point on the floor. It demonstrates how global illumination of that point is achieved through multiple bounces of the ray and surface interactions modeled by BSDFs|
 
 
 
