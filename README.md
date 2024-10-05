@@ -48,7 +48,7 @@ As rays bounce off surfaces, they generate multiple reflections and refractions 
 ### Path Continuation/Termination using Stream Compaction
 
 
-### Path Segments contiguous in memory by Material before shading
+### Path Segments contiguous in memory by Material before BSDF Evaluation and Shading
 
 
 ## Part 3: Physically-based Visual Improvements
