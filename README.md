@@ -36,11 +36,17 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 
 ## Part 2: Core Features Implemented
 
-### Lambertian Diffuse BSDF Evaluation
+### Ideal Diffuse (Lambertian) BSDF Evaluation
+|Lambertian Reflectance|
+|:--:|
+|![lambertian_diffuse](img/lambertian_diffuse.PNG) <tr></tr>|
+|Source: [Wikipedia](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
-
-### Perfect Specular Reflection BSDF Evaluation
-
+### Perfect Specular Reflection (Mirrored) BSDF Evaluation
+|Mirrored Reflectance|
+|:--:|
+|![specular_reflection](img/specular_reflection.png) <tr></tr>|
+|Source: [Wikipedia](https://en.wikipedia.org/wiki/Specular_reflection)|
 
 ### Stochastic Sampled Antialiasing
 
