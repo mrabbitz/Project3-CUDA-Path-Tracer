@@ -62,7 +62,7 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 ## Part 5: Performance Optimizations
 
 ### Bounding Volume Hierarchy (BVH)
-**Construction includes the Surface Area Hueristic (SAH)**
+**Construction uses the Surface Area Hueristic (SAH)**
 
 
 
