@@ -102,6 +102,11 @@ Metal BSDF evaluation models the unique reflective properties of metallic surfac
 ## Part 4: Mesh Enhancements
 
 ### OBJ Loader and Renderer (Ray-Triangle Intersection)
+The OBJ Loader and Renderer handles the loading and rendering of 3D models from OBJ files. It uses the [tinyObj](https://github.com/syoyo/tinyobjloader) library to parse the OBJ file, extracting material and geometry data, including vertices and normals. The materials are categorized based on their properties, such as color, reflectivity, and refractivity. The renderer supports both reflective and refractive materials, enabling realistic visual effects.
+
+For ray-triangle intersection, the algorithm tests whether a ray intersects with a triangle in the scene. It uses barycentric coordinates to determine the intersection point and calculates the surface normal. If an intersection occurs, it provides information about the intersection point and the normal direction, enabling accurate lighting and shading calculations. This setup allows for efficient rendering of complex shapes and materials, resulting in high-quality images.
+
+***Insert cool demo image(s) here***
 
 ## Part 5: Performance Optimizations
 
