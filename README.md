@@ -22,10 +22,6 @@ As rays bounce off surfaces, they generate multiple reflections and refractions 
 |:--:|
 |![bsdf](img/bsdf.png)|
 
-|BSDF = BRDF + BTDF|
-|:--:|
-|![bsdf](img/bsdf.png)|
-
 |Global Illumination = Direct Illumination + Indirect Illumination|
 |:--:|
 |![global_illumination](img/global_illumination.png)|
