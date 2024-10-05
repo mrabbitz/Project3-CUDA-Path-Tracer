@@ -56,13 +56,13 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 |Shooting a ray in the center of each pixel|
 |:--:|
 |<img src="img/anti_aliasing_0.PNG" alt="anti_aliasing_0" height="200"> <tr></tr>|
-|The ray either hits yellow or gray. The pixel gets the associated color, leading to an image with jagged edges <tr></tr>|
+|The ray either hits yellow or gray. The pixel gets the associated color, leading to an image with jagged edges. <tr></tr>|
 |[Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
 
 |Shooting multiple rays in the space of a single pixel (the top-left pixel in above image)|
 |:--:|
 |<img src="img/anti_aliasing_1.PNG" alt="anti_aliasing_1" height="200"> <tr></tr>|
-|This example shows 25 ray samples taken for a single pixel, where each sample either returns yellow or gray. The color is averaged over all samples taken <tr></tr>|
+|This example shows 25 ray samples taken for a single pixel, where each sample either returns yellow or gray. The color is averaged over all samples taken. <tr></tr>|
 |[Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
 
 ### Path Continuation/Termination using Stream Compaction
