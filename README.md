@@ -78,6 +78,8 @@ Sorting path segments by material before BSDF evaluation helps improve memory co
 
 However, this sorting step can introduce overhead in simpler scenes with few materials, where the cost of sorting outweighs the benefits. In such cases, sorting adds computational expense without significantly improving performance, leading to slower runtimes. The advantage of sorting is most noticeable in complex scenes with a diverse range of materials.
 
+***Insert performance analysis chart here of runtime of scenes of many materials and few materials***
+
 ## Part 3: Physically-based Visual Improvements
 
 ### Dielectric BSDF Evaulation (Refraction, Fresnel effects)
