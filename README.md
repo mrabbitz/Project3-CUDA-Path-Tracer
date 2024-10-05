@@ -95,6 +95,9 @@ Dielectric BSDF Evaluation models the behavior of materials that exhibit both re
 ***Insert cool demo image(s) here***
 
 ### Metal BSDF Evaulation (Roughness, Fresnel effects)
+Metal BSDF evaluation models the unique reflective properties of metallic surfaces, capturing both roughness and Fresnel effects. When light hits a metal surface, it is primarily reflected, but some light can scatter into the material, causing absorption. This scattering can lead to softer highlights and reduced overall brightness. The evaluation takes into account the angle of incidence and the roughness of the surface to create realistic reflections. As a result, this approach achieves a more accurate representation of metals, balancing their shiny appearance with the subtle dimming effects from light absorption.
+
+***Insert cool demo image(s) here***
 
 ## Part 4: Mesh Enhancements
 
