@@ -36,9 +36,33 @@ As rays bounce off surfaces, they generate multiple reflections and refractions 
 
 ## Part 2: Core Features Implemented
 
+### Lambertian Diffuse BSDF Evaluation
 
 
-## Part 3: Additional Features Implemented
+### Perfect Specular Reflection BSDF Evaluation
+
+
+### Stochastic Sampled Antialiasing
+
+
+### Path Continuation/Termination using Stream Compaction
+
+
+### Path Segments contiguous in memory by Material before shading
+
+
+## Part 3: Physically-based Visual Improvements
+
+### Dielectric BSDF Evaulation (Refraction, Fresnel effects)
+
+## Part 4: Mesh Enhancements
+
+### OBJ Loader and Renderer (Ray-Triangle Intersection)
+
+## Part 5: Performance Optimizations
+
+### Bounding Volume Hierarchy (BVH)
+
 
 
 
