@@ -90,6 +90,9 @@ However, this sorting step can introduce overhead in simpler scenes with few mat
 ## Part 3: Physically-based Visual Improvements
 
 ### Dielectric BSDF Evaulation (Refraction, Fresnel effects)
+Dielectric BSDF Evaluation models the behavior of materials that exhibit both reflective and refractive properties, such as glass or water. In this implementation, the evaluation begins by determining the index of refraction based on whether the incoming ray hits the front or back face of the surface. Using Snell's Law, the algorithm computes the direction of the refracted ray, while also considering Fresnel effects, which dictate that some portion of the incoming light will be reflected. If total internal reflection occurs, the ray is reflected instead of refracted. This approach allows for a realistic simulation of light interactions at boundaries, capturing the subtleties of refraction and reflection based on the angle of incidence and the material's properties.
+
+***Insert cool demo image(s) here***
 
 ### Metal BSDF Evaulation (Roughness, Fresnel effects)
 
