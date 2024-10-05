@@ -114,8 +114,18 @@ __host__ __device__ void scatterRay(
         // both arguments are already normalized, so the reflected ray will be normalized
         scatter_direction = glm::reflect(pathSegment.ray.direction, normal);
 
+        // my dirty, relatively cheap way of capturing the complexity of the fresnel effect for metals
+        // this simulates an exponential dropoff of roughness as we reach grazing angles
+        // cos_theta = 0:       fresnel_adjusted_roughness_factor = 0.0
+        // cos_theta = 0.25:    fresnel_adjusted_roughness_factor = 0.354
+        // cos_theta = 0.5:     fresnel_adjusted_roughness_factor = 0.707
+        // cos_theta = 0.75:    fresnel_adjusted_roughness_factor = 0.931
+        // cos_theta = 1:       fresnel_adjusted_roughness_factor = 1.0
+        float cos_theta = min(glm::dot(-pathSegment.ray.direction, normal), 1.0f);
+        float fresnel_adjusted_roughness_factor = pow(cos_theta, 1.0f - cos_theta);
+
         // roughness already clamped to 0, 1
-        scatter_direction += m.roughness * random_unit_vector(rng);
+        scatter_direction += fresnel_adjusted_roughness_factor * m.roughness * random_unit_vector(rng);
 
         // The catch is that for big spheres or grazing rays, we may scatter below the surface. We can just have the surface absorb those
         if (glm::dot(scatter_direction, normal) > 0.0f)
