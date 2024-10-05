@@ -24,7 +24,7 @@ As rays bounce off surfaces, they generate multiple reflections and refractions 
 
 |BSDF = BRDF + BTDF|
 |:--:|
-|![bsdf](img/bsdf.png)|
+|![bsdf](img/bsdf.png) <tr></tr>|
 |[Wikipedia](https://en.wikipedia.org/wiki/Bidirectional_scattering_distribution_function)|
 
 |"Scattering" in Path Tracing using BSDF|
