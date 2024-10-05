@@ -37,6 +37,8 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 ## Part 2: Core Features Implemented
 
 ### Ideal Diffuse (Lambertian) BSDF Evaluation
+Ideal Diffuse (Lambertian) BSDF evaluation models perfectly diffuse surfaces that scatter light uniformly in all directions. The amount of light reflected is proportional to the cosine of the angle between the incoming light direction and the surface normal, following Lambert's cosine law. As a result, light is scattered more strongly in directions closer to the surface normal. In this path tracer, the evaluation is computed by randomly sampling directions in a hemisphere around the surface normal, with a cosine-weighted bias for more accurate light contribution.
+
 |Lambertian Reflectance|
 |:--:|
 |<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="200"> <tr></tr>|
