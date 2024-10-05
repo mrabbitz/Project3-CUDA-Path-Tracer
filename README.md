@@ -42,11 +42,15 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 |<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="200"> <tr></tr>|
 |Source: [Wikipedia](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
+***Insert cool demo image(s) here***
+
 ### Perfect Specular Reflection (Mirrored) BSDF Evaluation
 |Mirrored Reflectance|
 |:--:|
 |<img src="img/specular_reflection.png" alt="specular_reflection" height="200"> <tr></tr>|
 |Source: [Wikipedia](https://en.wikipedia.org/wiki/Specular_reflection)|
+
+***Insert cool demo image(s) here***
 
 ### Stochastic Sampled Antialiasing
 
