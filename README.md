@@ -29,7 +29,7 @@ As rays bounce off surfaces, they generate multiple reflections and refractions 
 |![bsdf](img/bsdf.png) <tr></tr>|
 |Source: [Wikipedia](https://en.wikipedia.org/wiki/Bidirectional_scattering_distribution_function)|
 
-|"Scattering" in Path Tracing using BSDF|
+|"Scattering" in Path Tracing using BSDFs|
 |:--:|
 |![path_tracing](img/path_tracing.png) <tr></tr>|
 |This series illustrates how rays are cast from the eye in path tracing, with each image depicting the increasing number of bounces (1, 2, and 3) that contribute to global illumination through surface interactions modeled by BSDFs|
