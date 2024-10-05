@@ -65,6 +65,8 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 |This example shows 25 ray samples taken for a single pixel, where each sample either returns yellow or gray. The color is averaged over all samples taken. <tr></tr>|
 |[Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
 
+***Insert cool demo image(s) here***
+
 ### Path Continuation/Termination using Stream Compaction
 
 
