@@ -55,7 +55,7 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 ### Stochastic Sampled Antialiasing
 |Taking a single sample per pixel leads to jagged edges of an object|
 |:--:|
-|<img src="img/anti_aliasing_0.PNG" alt="anti_aliasing_0" height="200"> <tr></tr>|
+|<img src="img/anti_aliasing_0.PNG" alt="anti_aliasing_0" height="500"> <tr></tr>|
 |[Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
 
 ### Path Continuation/Termination using Stream Compaction
