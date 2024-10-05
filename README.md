@@ -47,6 +47,8 @@ Ideal Diffuse (Lambertian) BSDF evaluation models perfectly diffuse surfaces tha
 ***Insert cool demo image(s) here***
 
 ### Perfect Specular Reflection (Mirrored) BSDF Evaluation
+Perfect Specular Reflection (Mirrored) BSDF evaluation models surfaces that reflect light in a single, mirror-like direction. Incoming light rays are reflected at an angle equal to the incident angle relative to the surface normal, creating sharp reflections without any scattering. In this path tracer, the reflection is computed by reflecting the incoming ray about the surface normal, effectively simulating the behavior of ideal mirrors.
+
 |Mirrored Reflectance|
 |:--:|
 |<img src="img/specular_reflection.png" alt="specular_reflection" height="200"> <tr></tr>|
