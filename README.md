@@ -68,7 +68,10 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 ***Insert cool demo image(s) here***
 
 ### Path Continuation/Termination using Stream Compaction
+In the path tracer implementation, Path Continuation/Termination is handled using stream compaction with [thrust::stable_partition](https://nvidia.github.io/cccl/thrust/api/function_group__partitioning_1ga12fbf51ebfc80fd049ed0cbde2dd8ff8.html).
+During each iteration, rays (or path segments) are traced through the scene, and after each bounce, rays that have not yet terminated are compacted in memory to improve computational efficiency. Rays that either hit light sources or fail to hit any objects are removed from the pool of active rays.
 
+Using stream compaction minimizes wasted computation on terminated rays and allows more efficient use of GPU resources. By focusing only on active rays, the path tracer optimizes workload distribution, ensuring that relevant rays contribute to the image. This method enhances the overall scalability and efficiency of the path tracer, particularly in complex scenes or deep bounce scenarios.
 
 ### Path Segments contiguous in memory by Material before BSDF Evaluation and Shading
 
