@@ -24,9 +24,10 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 |*Left: Light Ray* ***directly*** *illuminating the point on the floor from the viewer's perspective via no intermediate bounce(s)* <tr></tr>|
 |*Right: Light Ray* ***indirectly*** *illuminating the point on the floor from the viewer's perspective via an intermediate bounce*|
 
-|BSDF = BRDF + BTDF|
+|Bidirectional Scattering Distribution Function (BSDF)|
 |:--:|
 |<img src="img/bsdf.png" alt="bsdf" height="400"> <tr></tr>|
+|A BSDF is a mathematical model that describes how light is scattered when it interacts with a surface. It provides a way to characterize the reflection and transmission of light at a surface by specifying how incoming light is redistributed into outgoing directions. The BSDF can be divided into two components: the Bidirectional Reflectance Distribution Function (BRDF), which describes reflection, and the Bidirectional Transmittance Distribution Function (BTDF), which describes transmission. BSDFs are essential in rendering and computer graphics, as they help simulate realistic materials and lighting interactions, contributing to the overall realism of rendered images.|
 |[Source](https://en.wikipedia.org/wiki/Bidirectional_scattering_distribution_function)|
 
 |"Scattering" in Path Tracing using BSDFs|
