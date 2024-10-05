@@ -91,28 +91,29 @@ However, this sorting step can introduce overhead in simpler scenes with few mat
 
 ## Part 3: Physically-based Visual Improvements
 
-### Dielectric BSDF Evaulation (Refraction, Fresnel effects)
+### Dielectric BSDF Evaulation
 Dielectric BSDF Evaluation models the behavior of materials that exhibit both reflective and refractive properties, such as glass or water. In this implementation, the evaluation begins by determining the index of refraction based on whether the incoming ray hits the front or back face of the surface. Using Snell's Law, the algorithm computes the direction of the refracted ray, while also considering Fresnel effects, which dictate that some portion of the incoming light will be reflected. If total internal reflection occurs, the ray is reflected instead of refracted. This approach allows for a realistic simulation of light interactions at boundaries, capturing the subtleties of refraction and reflection based on the angle of incidence and the material's properties.
 
 ***Insert cool demo image(s) here***
 
-### Metal BSDF Evaulation (Roughness, Fresnel effects)
+### Metal BSDF Evaulation
 Metal BSDF evaluation models the unique reflective properties of metallic surfaces, capturing both roughness and Fresnel effects. When light hits a metal surface, it is primarily reflected, but some light can scatter into the material, causing absorption. This scattering can lead to softer highlights and reduced overall brightness. The evaluation takes into account the angle of incidence and the roughness of the surface to create realistic reflections. As a result, this approach achieves a more accurate representation of metals, balancing their shiny appearance with the subtle dimming effects from light absorption.
 
 ***Insert cool demo image(s) here***
 
 ## Part 4: Mesh Enhancements
 
-### OBJ Loader and Renderer (Ray-Triangle Intersection)
-The OBJ Loader and Renderer handles the loading and rendering of 3D models from OBJ files. It uses the [tinyObj](https://github.com/syoyo/tinyobjloader) library to parse the OBJ file, extracting material and geometry data, including vertices and normals. The materials are categorized based on their properties, such as color, reflectivity, and refractivity. The renderer supports both reflective and refractive materials, including dielectrics and metals with roughness, as well as light-emitting materials that contribute to realistic illumination effects in the scene.
+### OBJ Loading and Rendering
+OBJ Loading and Rendering enables the loading and rendering of 3D models from OBJ files. It uses the [tinyObj](https://github.com/syoyo/tinyobjloader) library to parse the OBJ file, extracting material and geometry data, including vertices and normals. The extracted material data are categorized into types such as dielectrics, metals, diffuse materials, and light-emitting materials.
 
-For ray-triangle intersection, the algorithm tests whether a ray intersects with a triangle in the scene. It uses barycentric coordinates to determine the intersection point and calculates the surface normal. If an intersection occurs, it provides information about the intersection point and the normal direction, enabling accurate lighting and shading calculations. This setup allows for efficient rendering of complex shapes and materials, resulting in high-quality images.
+The renderer implements the [Möller–Trumbore intersection algorithm](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/moller-trumbore-ray-triangle-intersection.html) to test whether a ray intersects with a triangle in the scene. This algorithm uses barycentric coordinates to determine the intersection point and calculates the surface normal.
 
 ***Insert cool demo image(s) here***
 
 ## Part 5: Performance Optimizations
 
 ### Bounding Volume Hierarchy (BVH)
+[Reference 1](https://jacco.ompf2.com/2022/04/13/how-to-build-a-bvh-part-1-basics/) [Reference 2](https://jacco.ompf2.com/2022/04/18/how-to-build-a-bvh-part-2-faster-rays/)
 The Bounding Volume Hierarchy (BVH) implementation utilizes the Surface Area Heuristic (SAH) to efficiently build a hierarchical structure for 3D geometries, which significantly enhances ray intersection performance. Each geometry is encapsulated within an Axis-Aligned Bounding Box (AABB), calculated for various shapes such as triangles, cubes, and spheres. The BVH nodes store the AABBs and reference the geometries, while the subdivision process intelligently partitions the geometries based on their centroids. The SAH optimizes this subdivision by evaluating potential split positions and axes to minimize the expected cost of ray-object intersection tests, effectively balancing the number of rays and objects in each node.
 
 This hierarchical organization allows the BVH to reduce the number of geometry checks during ray tracing. The algorithm first tests for intersections with the bounding boxes of BVH nodes, enabling early exits if a node is not hit. If a leaf node is reached, it checks for intersections with the individual geometries it contains. This efficient approach to spatial data organization results in faster rendering times in graphics applications, making it ideal for complex scenes with numerous geometries.
