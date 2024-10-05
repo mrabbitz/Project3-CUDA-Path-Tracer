@@ -39,7 +39,7 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 ### Ideal Diffuse (Lambertian) BSDF Evaluation
 |Lambertian Reflectance|
 |:--:|
-|![lambertian_diffuse](img/lambertian_diffuse.PNG) <tr></tr>|
+|<img src="img/lambertian_diffuse.png" alt="lambertian_diffuse" height="200"> <tr></tr>|
 |Source: [Wikipedia](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
 ### Perfect Specular Reflection (Mirrored) BSDF Evaluation
