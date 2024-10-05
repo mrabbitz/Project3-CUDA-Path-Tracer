@@ -28,7 +28,7 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 |:--:|
 |<img src="img/bsdf.png" alt="bsdf" height="400"> <tr></tr>|
 |A BSDF is a mathematical model that describes how light is scattered when it interacts with a surface. It provides a way to characterize the reflection and transmission of light at a surface by specifying how incoming light is redistributed into outgoing directions. The BSDF can be divided into two components: the Bidirectional Reflectance Distribution Function (BRDF), which describes reflection, and the Bidirectional Transmittance Distribution Function (BTDF), which describes transmission. BSDFs are essential in rendering and computer graphics, as they help simulate realistic materials and lighting interactions, contributing to the overall realism of rendered images. <tr></tr>|
-|[Source](https://en.wikipedia.org/wiki/Bidirectional_scattering_distribution_function)|
+|[Image Source](https://en.wikipedia.org/wiki/Bidirectional_scattering_distribution_function)|
 
 |"Scattering" in Path Tracing using BSDFs|
 |:--:|
@@ -43,7 +43,7 @@ Ideal Diffuse (Lambertian) BSDF evaluation models perfectly diffuse surfaces tha
 |Lambertian Reflectance|
 |:--:|
 |<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="200"> <tr></tr>|
-|[Source](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
+|[Image Source](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
 ***Insert cool demo image(s) here***
 
@@ -53,7 +53,7 @@ Perfect Specular Reflection (Mirrored) BSDF evaluation models surfaces that refl
 |Mirrored Reflectance|
 |:--:|
 |<img src="img/specular_reflection.png" alt="specular_reflection" height="200"> <tr></tr>|
-|[Source](https://en.wikipedia.org/wiki/Specular_reflection)|
+|[Image Source](https://en.wikipedia.org/wiki/Specular_reflection)|
 
 ***Insert cool demo image(s) here***
 
@@ -64,14 +64,14 @@ Stochastic Sampled Antialiasing enhances the visual quality of rendered images b
 |:--:|
 |<img src="img/anti_aliasing_0.PNG" alt="anti_aliasing_0" height="200"> <tr></tr>|
 |The ray either hits yellow or gray. The pixel gets the associated color, leading to an image with jagged edges. <tr></tr>|
-|[Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
+|[Image Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
 
 |Antialiasing ON - Shooting multiple rays in the space of a single pixel|
 |:--:|
 |In this graphic, we are referring to the top-left pixel in the above image <tr></tr>|
 |<img src="img/anti_aliasing_1.PNG" alt="anti_aliasing_1" height="200"> <tr></tr>|
 |This example shows 25 ray samples taken for a single pixel, where each sample either returns yellow or gray. The color is averaged over all samples taken. <tr></tr>|
-|[Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
+|[Image Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
 
 ***Insert cool demo image(s) here***
 
