@@ -22,9 +22,13 @@ As rays bounce off surfaces, they generate multiple reflections and refractions 
 |:--:|
 |![global_illumination](img/global_illumination.png)|
 
-|BSDF = BRDF + BTDF|"Scattering" in Path Tracing using BSDF|
-|:--:|:--:|
-|![bsdf](img/bsdf.png)|![path_tracing](img/path_tracing.png)|
+|BSDF = BRDF + BTDF|
+|:--:|
+|![bsdf](img/bsdf.png)|
+
+|"Scattering" in Path Tracing using BSDF|
+|:--:|
+|![path_tracing](img/path_tracing.png)|
 
 
 
