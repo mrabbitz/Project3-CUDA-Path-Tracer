@@ -80,6 +80,8 @@ During each iteration, rays (or path segments) are traced through the scene, and
 
 This use of stream compaction reduces wasted computation on terminated segments and makes more efficient use of GPU resources. By focusing only on active path segments, the path tracer optimizes workload distribution, ensuring that only relevant segments contribute to the image. This approach enhances the scalability and efficiency of the path tracer, especially in complex scenes or deep bounce scenarios.
 
+***Insert performance analysis chart here of runtime of scenes of many non-hit rays vs many hit rays***
+
 ### Path Segments contiguous in memory by Material before BSDF Evaluation and Shading
 Sorting path segments by material before BSDF evaluation helps improve memory coherence and efficiency during shading by grouping similar materials together. This allows the path tracer to batch shading operations, reducing divergence in GPU kernels, especially in scenes with many different materials. When path segments are contiguous in memory by material, similar shading tasks (e.g., diffuse, reflective, or refractive) are processed more efficiently.
 
@@ -111,7 +113,11 @@ For ray-triangle intersection, the algorithm tests whether a ray intersects with
 ## Part 5: Performance Optimizations
 
 ### Bounding Volume Hierarchy (BVH)
-**Construction uses the Surface Area Hueristic (SAH) for Axis-Aligned Bounding Box (AABB) subdivision**
+The Bounding Volume Hierarchy (BVH) implementation utilizes the Surface Area Heuristic (SAH) to efficiently build a hierarchical structure for 3D geometries, which significantly enhances ray intersection performance. Each geometry is encapsulated within an Axis-Aligned Bounding Box (AABB), calculated for various shapes such as triangles, cubes, and spheres. The BVH nodes store the AABBs and reference the geometries, while the subdivision process intelligently partitions the geometries based on their centroids. The SAH optimizes this subdivision by evaluating potential split positions and axes to minimize the expected cost of ray-object intersection tests, effectively balancing the number of rays and objects in each node.
+
+This hierarchical organization allows the BVH to reduce the number of geometry checks during ray tracing. The algorithm first tests for intersections with the bounding boxes of BVH nodes, enabling early exits if a node is not hit. If a leaf node is reached, it checks for intersections with the individual geometries it contains. This efficient approach to spatial data organization results in faster rendering times in graphics applications, making it ideal for complex scenes with numerous geometries.
+
+***Insert performance analysis chart here of runtime of scenes with and without BVH***
 
 
 
