@@ -59,14 +59,15 @@ Perfect Specular Reflection (Mirrored) BSDF evaluation models surfaces that refl
 ### Stochastic Sampled Antialiasing
 Stochastic Sampled Antialiasing enhances the visual quality of rendered images by reducing aliasing artifacts through jittering ray directions within a single pixel. In this implementation, rays are generated from the camera's position and directed toward the scene, incorporating a random offset to the pixel coordinates. When stochastic sampling is enabled, each ray is slightly perturbed within the pixel range, creating a more varied sampling pattern. This randomization averages out pixel colors over multiple samples, resulting in smoother transitions and improved image fidelity.
 
-|Shooting a ray in the center of each pixel|
+|Antialising OFF - Shooting a ray in the center of each pixel|
 |:--:|
 |<img src="img/anti_aliasing_0.PNG" alt="anti_aliasing_0" height="200"> <tr></tr>|
 |The ray either hits yellow or gray. The pixel gets the associated color, leading to an image with jagged edges. <tr></tr>|
 |[Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
 
-|Shooting multiple rays in the space of a single pixel (the top-left pixel in above image)|
+|Antialiasing ON - Shooting multiple rays in the space of a single pixel|
 |:--:|
+|In this graphic, we are referring to the top-left pixel in the above image <tr></tr>|
 |<img src="img/anti_aliasing_1.PNG" alt="anti_aliasing_1" height="200"> <tr></tr>|
 |This example shows 25 ray samples taken for a single pixel, where each sample either returns yellow or gray. The color is averaged over all samples taken. <tr></tr>|
 |[Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
