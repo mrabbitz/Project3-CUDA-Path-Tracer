@@ -57,7 +57,7 @@ Perfect Specular Reflection (Mirrored) BSDF evaluation models surfaces that refl
 |<img src="img/specular_reflection.png" alt="specular_reflection" height="250"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Specular_reflection)|
 
-|Sphere + Cuboid are Perfect Specular|Floor is Perfect Specular|
+|Perfect Specular Sphere + Cuboid|Perfect Specular Floor|
 |:--:|:--:|
 |![](img/1_mirror_sphere_cuboid.png)|![](img/1_mirror_floor.png)|
 
@@ -77,13 +77,13 @@ Stochastic Sampled Antialiasing enhances the visual quality of rendered images b
 |This example shows 25 ray samples taken for a single pixel, where each sample either returns yellow or gray. The color is averaged over all samples taken. <tr></tr>|
 |[Image Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
 
-|Antialising OFF|
+|Antialising OFF - Sharp corners|
 |:--:|
-|![](img/2_antialiased_not_zoomed.png)|
+|![](img/2_antialiased_not_zoomed_x2.png)|
 
-|Antialiasing ON|
+|Antialiasing ON - Sharp corners|
 |:--:|
-|![](img/2_antialiased_zoomed.png)|
+|![](img/2_antialiased_zoomed_x2.png)|
 
 ### Path Continuation/Termination using Stream Compaction
 In the path tracer implementation, Path Continuation/Termination is handled using stream compaction with [thrust::stable_partition](https://nvidia.github.io/cccl/thrust/api/function_group__partitioning_1ga12fbf51ebfc80fd049ed0cbde2dd8ff8.html).
@@ -105,12 +105,33 @@ However, this sorting step can introduce overhead in simpler scenes with few mat
 ### Dielectric BSDF Evaulation
 Dielectric BSDF Evaluation models the behavior of materials that exhibit both reflective and refractive properties, such as glass or water. In this implementation, the evaluation begins by determining the index of refraction based on whether the incoming ray hits the front or back face of the surface. Using Snell's Law, the algorithm computes the direction of the refracted ray, while also considering Fresnel effects, which dictate that some portion of the incoming light will be reflected. If total internal reflection occurs, the ray is reflected instead of refracted. This approach allows for a realistic simulation of light interactions at boundaries, capturing the subtleties of refraction and reflection based on the angle of incidence and the material's properties.
 
-***Insert cool demo image(s) here***
+|Glass Cuboids|Glass Sphere|
+|:--:|:--:|
+|![](img/3_dielectric_cuboids.png)|![](img/3_dielectric_sphere.png)|
 
 ### Metal BSDF Evaulation
 Metal BSDF evaluation models the unique reflective properties of metallic surfaces, capturing both roughness and Fresnel effects. When light hits a metal surface, it is primarily reflected, but some light can scatter into the material, causing absorption. This scattering can lead to softer highlights and reduced overall brightness. The evaluation takes into account the angle of incidence and the roughness of the surface to create realistic reflections. As a result, this approach achieves a more accurate representation of metals, balancing their shiny appearance with the subtle dimming effects from light absorption.
 
-***Insert cool demo image(s) here***
+<table>
+  <tr>
+    <th align="center" colspan="3">Metal Sphere + Cuboid</th>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td align="center">Rough</td>
+    <td align="center">Rougher</td>
+    <td align="center">Roughest</td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td align="center"><img src="img/4_metal_gold_rough0.png"></td>
+    <td align="center"><img src="img/4_metal_gold_rough1.png"></td>
+    <td align="center"><img src="img/4_metal_gold_rough2.png"></td>
+  </tr>
+</table>
+
 
 ## Part 4: Mesh Enhancements
 
@@ -119,7 +140,10 @@ OBJ Loading and Rendering enables the loading and rendering of 3D models from OB
 
 The renderer implements the [Möller–Trumbore intersection algorithm](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/moller-trumbore-ray-triangle-intersection.html) to test whether a ray intersects with a triangle in the scene. This algorithm uses barycentric coordinates to determine the intersection point and calculates the surface normal.
 
-***Insert cool demo image(s) here***
+|Stanford Bunny|Mario|Homer Simpson|
+|:--:|:--:|:--:|
+|![](img/5_obj_standford_bunny.png)|![](img/5_obj_mario.png)|![](img/5_obj_homer.png) <tr></tr>|
+|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|[OBJ Source](https://sketchfab.com/3d-models/mario-obj-c549d24b60f74d8f85c7a5cbd2f55d0f)|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|
 
 ## Part 5: Performance Optimizations
 
