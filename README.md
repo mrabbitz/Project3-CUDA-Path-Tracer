@@ -45,6 +45,7 @@ Ideal Diffuse (Lambertian) BSDF evaluation models perfectly diffuse surfaces tha
 |<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="250"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
+<a name="diffuse-sphere-cuboid"></a>
 |All objects besides the light have diffuse surface materials|
 |:--:|
 |![](img/0_diffuse_sphere_cuboid.png)|
@@ -140,6 +141,7 @@ OBJ Loading and Rendering enables the loading and rendering of 3D models from OB
 
 The renderer implements the [Möller–Trumbore intersection algorithm](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/moller-trumbore-ray-triangle-intersection.html) to test whether a ray intersects with a triangle in the scene. This algorithm uses barycentric coordinates to determine the intersection point and calculates the surface normal.
 
+<a name="models-table"></a>
 |Stanford Bunny|Mario|Homer Simpson|
 |:--:|:--:|:--:|
 |![](img/5_obj_standford_bunny.png)|![](img/5_obj_mario.png)|![](img/5_obj_homer.png) <tr></tr>|
@@ -157,12 +159,14 @@ This hierarchical organization allows the BVH to reduce the number of geometry c
 
 ![](img/BVH_Performance.png)
 
+Each scene tested is inclusive of the empty Cornell Box (light, ceiling, floor, and three walls)
+
 |Scene          | Geometry Count | FPS - BVH OFF | FPS - BVH ON |
 | ------------- | -------------- | ------------- | ------------ |
-|Sphere + Cuboid|8               |37.00          |34.00         |
-|Homer Simpson  |12,006          |0.50           |21.00         |
-|Mario          |36,488          |0.17           |10.60         |
-|Stanford Bunny |69,457          |0.09           |13.00         |
+|[Sphere + Cuboid](#diffuse-sphere-cuboid)|8               |37.00          |34.00         |
+|[Homer Simpson](#models-table)|12,006          |0.50           |21.00         |
+|[Mario](#models-table)          |36,488          |0.17           |10.60         |
+|[Stanford Bunny](#models-table) |69,457          |0.09           |13.00         |
 
 
 
