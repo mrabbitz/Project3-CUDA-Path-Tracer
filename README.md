@@ -20,18 +20,21 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 
 |Global Illumination = Direct Illumination + Indirect Illumination|
 |:--:|
+|![](img/global_illumination.png)|
 |<img src="img/global_illumination.png" alt="global_illumination" height="200"> <tr></tr>|
 |*Left: Light Ray* ***directly*** *illuminating the point on the floor from the viewer's perspective via no intermediate bounce(s)* <tr></tr>|
 |*Right: Light Ray* ***indirectly*** *illuminating the point on the floor from the viewer's perspective via an intermediate bounce*|
 
 |Bidirectional Scattering Distribution Function (BSDF)|
 |:--:|
+|![](img/bsdf.png)|
 |<img src="img/bsdf.png" alt="bsdf" height="400"> <tr></tr>|
 |A BSDF is a mathematical model that describes how light is scattered when it interacts with a surface. It provides a way to characterize the reflection and transmission of light at a surface by specifying how incoming light is redistributed into outgoing directions. The BSDF can be divided into two components: the Bidirectional Reflectance Distribution Function (BRDF), which describes reflection, and the Bidirectional Transmittance Distribution Function (BTDF), which describes transmission. BSDFs are essential in rendering and computer graphics, as they help simulate realistic materials and lighting interactions, contributing to the overall realism of rendered images. <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Bidirectional_scattering_distribution_function)|
 
 |"Scattering" in Path Tracing using BSDFs|
 |:--:|
+|![](img/path_tracing.png)|
 |<img src="img/path_tracing.png" alt="path_tracing" height="200"> <tr></tr>|
 |This series illustrates a single ray cast from the eye in path tracing (yellow ray) as it focuses on a point on the floor. It demonstrates how global illumination at that point is achieved through multiple bounces of the ray, interacting with surfaces based on their BSDFs. Each bounce scatters additional rays according to the surface's BSDF, creating many ray paths. The contribution to the illumination of the initial point decreases with each bounce and ultimately concludes when all ray paths either hit a light source, exit the scene, or reach the bounce/depth limit.|
 
@@ -42,11 +45,13 @@ Ideal Diffuse (Lambertian) BSDF evaluation models perfectly diffuse surfaces tha
 
 |Lambertian Reflectance|
 |:--:|
+|![](img/lambertian_diffuse.PNG)|
 |<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="200"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
 |All objects besides the light have diffuse surface materials|
 |:--:|
+|![](img/0_diffuse_sphere_cuboid.png)|
 |<img src="img/0_diffuse_sphere_cuboid.png" alt="diffuse_sphere_cuboid">|
 
 ### Perfect Specular Reflection BSDF Evaluation
@@ -54,6 +59,7 @@ Perfect Specular Reflection (Mirrored) BSDF evaluation models surfaces that refl
 
 |Mirrored Reflectance|
 |:--:|
+|![](img/specular_reflection.png)|
 |<img src="img/specular_reflection.png" alt="specular_reflection" height="200"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Specular_reflection)|
 
@@ -64,6 +70,7 @@ Stochastic Sampled Antialiasing enhances the visual quality of rendered images b
 
 |Antialising OFF - Shooting a ray in the center of each pixel|
 |:--:|
+|![](img/anti_aliasing_0.PNG)|
 |<img src="img/anti_aliasing_0.PNG" alt="anti_aliasing_0" height="200"> <tr></tr>|
 |The ray either hits yellow or gray. The pixel gets the associated color, leading to an image with jagged edges. <tr></tr>|
 |[Image Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
@@ -71,6 +78,7 @@ Stochastic Sampled Antialiasing enhances the visual quality of rendered images b
 |Antialiasing ON - Shooting multiple rays in the space of a single pixel|
 |:--:|
 |In this graphic, we are referring to the top-left pixel in the above image <tr></tr>|
+|![](img/anti_aliasing_1.PNG)|
 |<img src="img/anti_aliasing_1.PNG" alt="anti_aliasing_1" height="200"> <tr></tr>|
 |This example shows 25 ray samples taken for a single pixel, where each sample either returns yellow or gray. The color is averaged over all samples taken. <tr></tr>|
 |[Image Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
