@@ -57,7 +57,9 @@ Perfect Specular Reflection (Mirrored) BSDF evaluation models surfaces that refl
 |<img src="img/specular_reflection.png" alt="specular_reflection" height="250"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Specular_reflection)|
 
-***Insert cool demo image(s) here***
+|Sphere + Cuboid are Perfect Specular|Floor is Perfect Specular|
+|:--:|:--:|
+|![](img/1_mirror_sphere_cuboid.png)|![](img/1_mirror_floor.png)|
 
 ### Stochastic Sampled Antialiasing
 Stochastic Sampled Antialiasing enhances the visual quality of rendered images by reducing aliasing artifacts through jittering ray directions within a single pixel. In this implementation, rays are generated from the camera's position and directed toward the scene, incorporating a random offset to the pixel coordinates. When stochastic sampling is enabled, each ray is slightly perturbed within the pixel range, creating a more varied sampling pattern. This randomization averages out pixel colors over multiple samples, resulting in smoother transitions and improved image fidelity.
