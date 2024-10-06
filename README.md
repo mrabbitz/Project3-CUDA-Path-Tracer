@@ -140,15 +140,10 @@ OBJ Loading and Rendering enables the loading and rendering of 3D models from OB
 
 The renderer implements the [Möller–Trumbore intersection algorithm](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-rendering-a-triangle/moller-trumbore-ray-triangle-intersection.html) to test whether a ray intersects with a triangle in the scene. This algorithm uses barycentric coordinates to determine the intersection point and calculates the surface normal.
 
-|Stanford Bunny|
-|:--:|
-|![](img/5_obj_standford_bunny.png)|
-|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|
-
-|Mario|
-|:--:|
-|![](img/5_obj_mario.png)|
-|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|
+|Stanford Bunny|Mario|
+|:--:|:--:|
+|![](img/5_obj_standford_bunny.png)|![](img/5_obj_mario.png) <tr></tr>|
+|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|
 
 ## Part 5: Performance Optimizations
 
