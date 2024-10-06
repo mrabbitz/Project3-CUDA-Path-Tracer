@@ -79,12 +79,10 @@ Stochastic Sampled Antialiasing enhances the visual quality of rendered images b
 
 |Antialising OFF|
 |:--:|
-|![](img/2_antialiased_not_zoomed.png)|
 |![](img/2_antialiased_not_zoomed_x2.png)|
 
 |Antialiasing ON|
 |:--:|
-|![](img/2_antialiased_zoomed.png)|
 |![](img/2_antialiased_zoomed_x2.png)|
 
 ### Path Continuation/Termination using Stream Compaction
