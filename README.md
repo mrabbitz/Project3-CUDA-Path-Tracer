@@ -71,7 +71,7 @@ Stochastic Sampled Antialiasing enhances the visual quality of rendered images b
 |Antialiasing ON - Shooting multiple rays in the space of a single pixel|
 |:--:|
 |In this graphic, we are referring to the top-left pixel in the above image <tr></tr>|
-|<img src="img/anti_aliasing_1.PNG" alt="anti_aliasing_1" height="150"> <tr></tr>|
+|![](img/anti_aliasing_1.PNG) <tr></tr>|
 |This example shows 25 ray samples taken for a single pixel, where each sample either returns yellow or gray. The color is averaged over all samples taken. <tr></tr>|
 |[Image Source](https://community.sap.com/t5/application-development-blog-posts/abap-ray-tracer-part-5-the-sample/ba-p/13338277)|
 
