@@ -20,8 +20,7 @@ As rays bounce off surfaces, they generate multiple reflections and/or refractio
 
 |Global Illumination = Direct Illumination + Indirect Illumination|
 |:--:|
-|![](img/global_illumination.png)|
-|<img src="img/global_illumination.png" alt="global_illumination" height="200"> <tr></tr>|
+|![](img/global_illumination.png) <tr></tr>|
 |*Left: Light Ray* ***directly*** *illuminating the point on the floor from the viewer's perspective via no intermediate bounce(s)* <tr></tr>|
 |*Right: Light Ray* ***indirectly*** *illuminating the point on the floor from the viewer's perspective via an intermediate bounce*|
 
