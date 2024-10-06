@@ -43,7 +43,7 @@ Ideal Diffuse (Lambertian) BSDF evaluation models perfectly diffuse surfaces tha
 |Lambertian Reflectance|
 |:--:|
 |![](img/lambertian_diffuse.PNG)|
-|<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="200"> <tr></tr>|
+|<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="250"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
 |All objects besides the light have diffuse surface materials|
