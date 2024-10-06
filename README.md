@@ -147,8 +147,8 @@ The renderer implements the [Möller–Trumbore intersection algorithm](https://
 
 |Mario|
 |:--:|
-|![](img/5_obj_standford_bunny.png)|
-|[OBJ Source](5_obj_mario.png)|
+|![](img/5_obj_mario.png)|
+|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|
 
 ## Part 5: Performance Optimizations
 
