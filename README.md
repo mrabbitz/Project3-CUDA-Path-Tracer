@@ -115,7 +115,6 @@ Metal BSDF evaluation models the unique reflective properties of metallic surfac
 |Rough|Rougher|Roughest|
 |:--:|:--:|:--:|
 |![](img/4_metal_gold_rough0.png)|![](img/4_metal_gold_rough1.png)|![](img/4_metal_gold_rough2.png)|
-|![](img/4_metal_silver_rough0.png)|![](img/4_metal_silver_rough1.png)|![](img/4_metal_silver_rough2.png)|
 
 ## Part 4: Mesh Enhancements
 
