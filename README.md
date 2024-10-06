@@ -155,7 +155,14 @@ The Bounding Volume Hierarchy (BVH) implementation utilizes the Surface Area Heu
 
 This hierarchical organization allows the BVH to reduce the number of geometry checks during ray tracing. The algorithm first tests for intersections with the bounding boxes of BVH nodes, enabling early exits if a node is not hit. If a leaf node is reached, it checks for intersections with the individual geometries it contains. This efficient approach to spatial data organization results in faster rendering times in graphics applications, making it ideal for complex scenes with numerous geometries.
 
-***Insert performance analysis chart here of runtime of scenes with and without BVH***
+![](img/BVH_Performance.png)
+
+|Scene          | Geometry Count | FPS - BVH OFF | FPS - BVH ON |
+| ------------- | -------------- | ------------- | ------------ |
+|Sphere + Cuboid|8               |37.00          |34.00         |
+|Homer Simpson  |12,006          |0.50           |21.00         |
+|Mario          |36,488          |0.17           |10.60         |
+|Stanford Bunny |69,457          |0.09           |13.00         |
 
 
 
