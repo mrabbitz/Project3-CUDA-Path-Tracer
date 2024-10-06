@@ -143,7 +143,7 @@ The renderer implements the [Möller–Trumbore intersection algorithm](https://
 |Stanford Bunny|Mario|Homer Simpson|
 |:--:|:--:|:--:|
 |![](img/5_obj_standford_bunny.png)|![](img/5_obj_mario.png)|![](img/5_obj_homer.png) <tr></tr>|
-|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|
+|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|[OBJ Source](https://sketchfab.com/3d-models/mario-obj-c549d24b60f74d8f85c7a5cbd2f55d0f)|[OBJ Source](https://github.com/alecjacobson/common-3d-test-models)|
 
 ## Part 5: Performance Optimizations
 
