@@ -159,14 +159,12 @@ This hierarchical organization allows the BVH to reduce the number of geometry c
 
 ![](img/BVH_Performance.png)
 
-Each scene tested is inclusive of the empty Cornell Box (light, ceiling, floor, and three walls)
-
 |Scene          | Geometry Count | FPS - BVH OFF | FPS - BVH ON |
 | ------------- | -------------- | ------------- | ------------ |
-|[Sphere + Cuboid](#diffuse-sphere-cuboid)|8               |37.00          |34.00         |
-|[Homer Simpson](#models-table)|12,006          |0.50           |21.00         |
-|[Mario](#models-table)          |36,488          |0.17           |10.60         |
-|[Stanford Bunny](#models-table) |69,457          |0.09           |13.00         |
+|[Sphere + Cuboid](#diffuse-sphere-cuboid)|8     |37.00|34.00   |
+|[Homer Simpson](#models-table)           |12,006|0.50 |21.00   |
+|[Mario](#models-table)                   |36,488|0.17 |10.60   |
+|[Stanford Bunny](#models-table)          |69,457|0.09 |13.00   |
 
 
 
