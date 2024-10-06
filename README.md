@@ -117,6 +117,8 @@ Metal BSDF evaluation models the unique reflective properties of metallic surfac
     <th align="center" colspan="3">Metal Sphere + Cuboid</th>
   </tr>
   <tr>
+  </tr>
+  <tr>
     <td align="center">Rough</td>
     <td align="center">Rougher</td>
     <td align="center">Roughest</td>
