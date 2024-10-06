@@ -45,15 +45,7 @@ Ideal Diffuse (Lambertian) BSDF evaluation models perfectly diffuse surfaces tha
 |<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="200"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
-|Sphere|
-|:--:|
-|<img src="img/0_diffuse_sphere.png" alt="diffuse_sphere" height="400">|
-
-|Cuboid|
-|:--:|
-|<img src="img/0_diffuse_cuboid.png" alt="diffuse_cuboid" height="400">|
-
-|Sphere + Cuboid|
+|All objects besides the light have diffuse surface materials|
 |:--:|
 |<img src="img/0_diffuse_sphere_cuboid.png" alt="diffuse_sphere_cuboid" height="400">|
 
