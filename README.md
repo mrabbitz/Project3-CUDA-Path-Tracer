@@ -55,7 +55,7 @@ Perfect Specular Reflection (Mirrored) BSDF evaluation models surfaces that refl
 |Mirrored Reflectance|
 |:--:|
 |![](img/specular_reflection.png)|
-|<img src="img/specular_reflection.png" alt="specular_reflection" height="200"> <tr></tr>|
+|<img src="img/specular_reflection.png" alt="specular_reflection" height="250"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Specular_reflection)|
 
 ***Insert cool demo image(s) here***
