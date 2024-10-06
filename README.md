@@ -57,7 +57,7 @@ Perfect Specular Reflection (Mirrored) BSDF evaluation models surfaces that refl
 |<img src="img/specular_reflection.png" alt="specular_reflection" height="250"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Specular_reflection)|
 
-|Sphere + Cuboid are Perfect Specular|Floor is Perfect Specular|
+|Perfect Specular Sphere + Cuboid|Perfect Specular Floor|
 |:--:|:--:|
 |![](img/1_mirror_sphere_cuboid.png)|![](img/1_mirror_floor.png)|
 
@@ -112,9 +112,11 @@ Dielectric BSDF Evaluation models the behavior of materials that exhibit both re
 ### Metal BSDF Evaulation
 Metal BSDF evaluation models the unique reflective properties of metallic surfaces, capturing both roughness and Fresnel effects. When light hits a metal surface, it is primarily reflected, but some light can scatter into the material, causing absorption. This scattering can lead to softer highlights and reduced overall brightness. The evaluation takes into account the angle of incidence and the roughness of the surface to create realistic reflections. As a result, this approach achieves a more accurate representation of metals, balancing their shiny appearance with the subtle dimming effects from light absorption.
 
-|Rough|Rougher|Roughest|
-|:--:|:--:|:--:|
-|![](img/4_metal_gold_rough0.png)|![](img/4_metal_gold_rough1.png)|![](img/4_metal_gold_rough2.png)|
+|Metal Sphere + Cuboid|
+|:--:|
+||Rough|Rougher|Roughest||
+||:--:|:--:|:--:||
+||![](img/4_metal_gold_rough0.png)|![](img/4_metal_gold_rough1.png)|![](img/4_metal_gold_rough2.png)||
 
 ## Part 4: Mesh Enhancements
 
