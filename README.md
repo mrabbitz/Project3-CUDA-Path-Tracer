@@ -166,6 +166,12 @@ This hierarchical organization allows the BVH to reduce the number of geometry c
 |[Mario](#models-table)                   |36,488|0.17 |10.60   |
 |[Stanford Bunny](#models-table)          |69,457|0.09 |13.00   |
 
+The results indicate that without a BVH, the runtime increases linearly with the number of geometries in the scene. This is expected, as each ray needs to check for intersections across all geometries when no BVH is used. However, the implementation of a BVH does not guarantee faster runtimes in every case.
+
+For simpler scenes, such as the Cornell Box with just a few additional geometries, the BVH can actually slow down performance. This may be due to the overhead involved in traversing the BVH structure, which outweighs the benefits for such low-complexity scenes.
+
+Interestingly, the Stanford Bunny scene, despite having nearly double the number of geometries compared to the Mario scene, performs better. This can be attributed to the shape of the models; the Mario figure is more complex, with thin, perpendicular limbs, making BVH traversal less efficient. In contrast, the Stanford Bunny is more compact and spherical, allowing the BVH to better organize its geometry, leading to improved performance.
+
 
 
 
