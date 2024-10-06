@@ -45,9 +45,17 @@ Ideal Diffuse (Lambertian) BSDF evaluation models perfectly diffuse surfaces tha
 |<img src="img/lambertian_diffuse.PNG" alt="lambertian_diffuse" height="200"> <tr></tr>|
 |[Image Source](https://en.wikipedia.org/wiki/Lambertian_reflectance)|
 
-|Sphere|Cuboid|Sphere + Cuboid|
-|:--:|:--:|:--:|
-|<img src="img/0_diffuse_sphere.png" alt="diffuse_sphere">|<img src="img/0_diffuse_cuboid.png" alt="diffuse_cuboid">|<img src="img/0_diffuse_sphere_cuboid.png" alt="diffuse_sphere_cuboid">|
+|Sphere|
+|:--:|
+|<img src="img/0_diffuse_sphere.png" alt="diffuse_sphere">|
+
+|Cuboid|
+|:--:|
+|<img src="img/0_diffuse_cuboid.png" alt="diffuse_cuboid">|
+
+|Sphere + Cuboid|
+|:--:|
+|<img src="img/0_diffuse_sphere_cuboid.png" alt="diffuse_sphere_cuboid">|
 
 ### Perfect Specular Reflection BSDF Evaluation
 Perfect Specular Reflection (Mirrored) BSDF evaluation models surfaces that reflect light in a single, mirror-like direction. Incoming light rays are reflected at an angle equal to the incident angle relative to the surface normal, creating sharp reflections without any scattering. In this path tracer, the reflection is computed by reflecting the incoming ray about the surface normal, effectively simulating the behavior of ideal mirrors.
