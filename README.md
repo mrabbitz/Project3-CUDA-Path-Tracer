@@ -105,7 +105,9 @@ However, this sorting step can introduce overhead in simpler scenes with few mat
 ### Dielectric BSDF Evaulation
 Dielectric BSDF Evaluation models the behavior of materials that exhibit both reflective and refractive properties, such as glass or water. In this implementation, the evaluation begins by determining the index of refraction based on whether the incoming ray hits the front or back face of the surface. Using Snell's Law, the algorithm computes the direction of the refracted ray, while also considering Fresnel effects, which dictate that some portion of the incoming light will be reflected. If total internal reflection occurs, the ray is reflected instead of refracted. This approach allows for a realistic simulation of light interactions at boundaries, capturing the subtleties of refraction and reflection based on the angle of incidence and the material's properties.
 
-***Insert cool demo image(s) here***
+|Glass Cuboids|Glass Sphere|
+|:--:|:--:|
+|![](img/3_dielectric_cuboids.png)|![](img/3_dielectric_sphere.png)|
 
 ### Metal BSDF Evaulation
 Metal BSDF evaluation models the unique reflective properties of metallic surfaces, capturing both roughness and Fresnel effects. When light hits a metal surface, it is primarily reflected, but some light can scatter into the material, causing absorption. This scattering can lead to softer highlights and reduced overall brightness. The evaluation takes into account the angle of incidence and the roughness of the surface to create realistic reflections. As a result, this approach achieves a more accurate representation of metals, balancing their shiny appearance with the subtle dimming effects from light absorption.
