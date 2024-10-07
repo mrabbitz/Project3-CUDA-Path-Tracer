@@ -161,7 +161,7 @@ This hierarchical organization allows the BVH to reduce the number of geometry c
 |[Mario](#models-table)                   |36,488|0.17 |10.60   |6135     |
 |[Stanford Bunny](#models-table)          |69,457|0.09 |13.00   |14344    |
 
-The results indicate that while a BVH improves performance overall, its impact varies significantly based on scene complexity. Without a BVH, rendering time increases linearly with the number of geometries, as each ray must check for intersections with every object. However, the overhead of the BVH can slow down simpler scenes, such as the Sphere + Cuboid example, where the costs of subdivision and traversal outweigh the benefits.
+The results indicate that while a BVH improves performance overall, its impact varies based on scene complexity. Without a BVH, rendering time increases linearly with the number of geometries, as each ray must check for intersections with every object. However, the overhead of the BVH can slow down simpler scenes, such as the Sphere + Cuboid example, where the costs of subdivision and traversal outweigh the benefits.
 
 In contrast, the speedup for more complex scenes is dramatic. In the Homer Simpson scene, the FPS increases by over 4000%, while in the Mario scene, it jumps by over 6000%. The most impressive improvement is seen in the Stanford Bunny scene, with a remarkable 14,344% speedup. This highlights the efficiency of the BVH in handling highly complex geometries, as it reduces the number of intersection tests by effectively grouping and organizing the objects spatially.
 
