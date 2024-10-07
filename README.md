@@ -91,14 +91,10 @@ During each iteration, rays (or path segments) are traced through the scene, and
 
 This use of stream compaction reduces wasted computation on terminated segments and makes more efficient use of GPU resources. By focusing only on active path segments, the path tracer optimizes workload distribution, ensuring that only relevant segments contribute to the image. This approach enhances the scalability and efficiency of the path tracer, especially in complex scenes or deep bounce scenarios.
 
-***Insert performance analysis chart here of runtime of scenes of many non-hit rays vs many hit rays***
-
 ### Path Segments contiguous in memory by Material before BSDF Evaluation and Shading
 Sorting path segments by material before BSDF evaluation helps improve memory coherence and efficiency during shading by grouping similar materials together. This allows the path tracer to batch shading operations, reducing divergence in GPU kernels, especially in scenes with many different materials. When path segments are contiguous in memory by material, similar shading tasks (e.g., diffuse, reflective, or refractive) are processed more efficiently.
 
 However, this sorting step can introduce overhead in simpler scenes with few materials, where the cost of sorting outweighs the benefits. In such cases, sorting adds computational expense without significantly improving performance, leading to slower runtimes. The advantage of sorting is most noticeable in complex scenes with a diverse range of materials.
-
-***Insert performance analysis chart here of runtime of scenes of many materials and few materials***
 
 ## Part 3: Physically-based Visual Improvements
 
