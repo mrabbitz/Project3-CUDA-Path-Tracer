@@ -8,8 +8,6 @@ CUDA Path Tracer
 * Tested on: Windows 10, i7-9750H @ 2.60GHz 32GB, RTX 2060 6GB (Personal)
 
 ![](img/banner_img_0.png)
-![](img/banner_img_1.png)
-![](img/banner_img_2.png)
 
 ## Part 1: Introduction
 
