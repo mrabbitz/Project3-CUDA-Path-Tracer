@@ -171,10 +171,16 @@ In contrast, the speedup for more complex scenes is dramatic. In the Homer Simps
 
 Interestingly, the Stanford Bunny scene, despite having nearly double the number of geometries compared to the Mario scene, outperforms it. This can be attributed to the shapes of the models; the Mario figure has thin, perpendicular limbs (T-shaped), making BVH traversal less efficient. In contrast, the Stanford Bunny's compact and spherical form allows the BVH to better organize its geometry, resulting in improved performance.
 
+## Part 6: Running the code
+The main function requires a scene description file. Call the program with one as an argument: `cis565_path_tracer scenes/sphere.json`. (In Visual Studio, `../scenes/sphere.json`.)
 
+If you are using Visual Studio, you can set this in the `Debugging > Command Arguments` section in the `Project Properties`. Make sure you get the path right - read the console for errors.
 
+### Controls
 
-
-
-
-
+* Esc to save an image and exit.
+* S to save an image. Watch the console for the output filename.
+* Space to re-center the camera at the original scene lookAt point.
+* Left mouse button to rotate the camera.
+* Right mouse button on the vertical axis to zoom in/out.
+* Middle mouse button to move the LOOKAT point in the scene's X/Z plane.
